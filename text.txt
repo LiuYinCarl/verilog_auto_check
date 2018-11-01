@@ -1,0 +1,20 @@
+module
+moduless
+endmodule
+ddendmodule
+
+begin     1
+ begin    2
+beginaa
+end      1
+ end     2
+ ;end    3
+  endaa
+
+
+>=
+<=
+==
+!=
+
+(.a1(x1), .a2(x2), .a3(x3))
