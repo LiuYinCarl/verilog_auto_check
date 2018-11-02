@@ -104,6 +104,21 @@ class VerilogAutoChecker(object):
             ',.!?[]()%#@&1234567890')}
         return text.translate(table)
 
+    def check_case(self, text):
+        """
+        检查关键字的大小写，统一为小写
+        """
+        for word in ['always', 'and', 'assign', 'wor', 'xor',
+                     'automatic', 'begin', 'case', 'casex', 'casez',
+                     'cell', 'deassign', 'default', 'defparam', 'design',
+                     'disable', 'edge', 'else', 'end', 'endcase',
+                     'endconfig', 'endfunction', 'endgenerate', 'endmodule', 'endprimitive',
+                     'endtable', 'endtask', 'event', 'for', 'force',
+                     'forever', 'fork', 'function', 'inout', 'input',
+                     'integer', 'reg', 'wire', 'while', 'xnor',
+                     ]:
+            text = re.sub(word, word, text, flags=re.IGNORECASE)
+
     def check_module_and_endmodule(self, text):
         """
         检查module和 endmodule
@@ -130,7 +145,6 @@ class VerilogAutoChecker(object):
     def check_begin_and_end(self, text):
         """
         检查 begin 和 end
-        :return:
         """
         begins = re.findall('\sbegin\s', text)
         ends = re.findall('[;\s]end\s', text)

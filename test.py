@@ -7,12 +7,16 @@ import re
 # print(os.getcwd().replace('\\', '/'))
 
 
-fi = 'E:/python/py-fiiles/verilog_auto_check/text.txt'
+fi = 'F:/github_project/verilog_auto_check/text.txt'
 text = ''
 
 with open(fi, 'r') as f:
     text = f.read()
     # print(text)
+text2 = re.sub('begin', 'begin', text, flags=re.IGNORECASE)
+
+with open(fi, 'w') as f:
+    f.write(text2)
 
 # modules = re.findall('[^d]module', text)
 #
@@ -39,7 +43,7 @@ with open(fi, 'r') as f:
 # with open(fi, 'w') as f:
 #     f.write(text4)
 
-print(re.findall('\((.*)\)', text))
+# print(re.findall('\((.*)\)', text))
 
 
 # In Python3, use str.maketrans instead
