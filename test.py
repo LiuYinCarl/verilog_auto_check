@@ -53,3 +53,22 @@ with open(fi, 'w') as f:
 # t = '中国，中文，标点符号！你好？１２３４５＠＃【】+=-（）'
 # t2 = t.translate(table)
 # print(t2)
+
+
+
+import chardet
+
+for file in ['decode.v', 'fen_ping.v', 'ji_shu.v', 'scanning.v', 'top_level.v']:
+    file_path = 'F:/github_project/verilog_auto_check/' + file
+    with open(file_path, 'rb') as f:
+        data = chardet.detect(f.read())
+        format_possibility = data['confidence']  # 获取该编码格式的可能性
+        print(type(format_possibility))
+        code_format = data['encoding']  # 获取编码格式
+        print(type(code_format))
+        # print(file, end='  ')
+        # print('%s' % chardet.detect(data))
+
+# f = open('/path/file.txt',r)
+# data = f.read()
+# print chardet.detect(data)
